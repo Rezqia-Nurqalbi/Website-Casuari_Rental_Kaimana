@@ -1,0 +1,84 @@
+<nav class="navbar">
+    <div class="nav-container">
+
+        <!-- LOGO -->
+        <a href="/" class="nav-logo">
+            <img src="../../images/logo.png" alt="Casuari Rental Kaimana">
+        </a>
+
+        <!-- MENU -->
+        <div class="nav-menu">
+            <a href="/views/pages/index.html">Home</a>
+            <a href="/views/pages/index.html#pilihan-kendaraan">Pilihan Kendaraan</a>
+            <a href="/views/pages/index.html#cara-sewa">Cara Sewa</a>
+        </div>
+
+    </div>
+</nav>
+
+<style>
+/* ================= NAVBAR ================= */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #D1D4C9;
+    z-index: 9999;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+
+/* CONTAINER */
+.nav-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 8px 20px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* LOGO */
+.nav-logo img {
+    height: 46px;
+    width: auto;
+    object-fit: contain;
+}
+
+/* MENU */
+.nav-menu {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-menu a {
+    color: black;
+    font-weight: 500;
+    font-size: 15px;
+    transition: color .2s ease;
+}
+
+.nav-menu a:hover {
+    color: #000;
+}
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+    .nav-container {
+        padding: 6px 16px;
+    }
+
+    .nav-logo img {
+        height: 40px;
+    }
+
+    .nav-menu {
+        gap: 14px;
+    }
+
+    .nav-menu a {
+        font-size: 14px;
+    }
+}
+</style>

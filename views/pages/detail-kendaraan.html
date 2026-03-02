@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casuari Rental Kaimana</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        html { scroll-behavior: smooth; }
+        body { margin:0; font-family:Arial, sans-serif; }
+        a { text-decoration:none; }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div id="navbar"></div>
+
+<section style="padding:80px 40px;">
+    <div style="display:flex; gap:50px; align-items:flex-start; flex-wrap:wrap;">
+
+        <!-- GAMBAR KENDARAAN -->
+        <div id="gambar-kendaraan"></div>
+
+        <!-- DETAIL KENDARAAN -->
+        <div style="flex:1; min-width:300px;">
+
+            <h2 id="nama-kendaraan" style="margin-bottom:20px;"></h2>
+
+            <div id="spesifikasi"
+                 style="display:grid; grid-template-columns:repeat(2,1fr); gap:20px; margin-bottom:30px;">
+            </div>
+
+            <p style="margin-bottom:25px;">
+                Ingin menggunakan unit ini? Hubungi kami sekarang juga
+                untuk mendapatkan informasi lebih lanjut.
+            </p>
+
+            <div style="display:flex; gap:15px; flex-wrap:wrap;">
+
+                <a href="https://wa.me/6282249611099" target="_blank"
+                   style="background:#E3DBBB; padding:12px 25px;
+                          border-radius:30px; text-decoration:none;
+                          color:black; font-weight:bold; display:flex; gap:10px;">
+                    <img src="../../images/fitur/wa.png" width="20">
+                    Hubungi Kami
+                </a>
+
+                <a href="/views/pages/index.html"
+                   style="background:#E3DBBB; padding:12px 25px;
+                          border-radius:30px; text-decoration:none;
+                          color:black; font-weight:bold;">
+                    Kembali ke Home
+                </a>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- FOOTER -->
+<div id="footer"></div>
+
+<script>
+/* ===== LOAD NAVBAR & FOOTER ===== */
+fetch("../components/navbar.html")
+    .then(res => res.text())
+    .then(data => document.getElementById("navbar").innerHTML = data);
+
+fetch("../components/footer.html")
+    .then(res => res.text())
+    .then(data => document.getElementById("footer").innerHTML = data);
+
+
+/* ===== AMBIL PARAM ===== */
+const params = new URLSearchParams(window.location.search);
+const nama = params.get("nama");
+
+const gambar = document.getElementById("gambar-kendaraan");
+const judul  = document.getElementById("nama-kendaraan");
+const spek   = document.getElementById("spesifikasi");
+
+/* ===== DATA KENDARAAN ===== */
+if (nama === "fortuner") {
+    setData("../../images/mobil/fortunerrr.jpg", "Toyota Fortuner", [
+        item("tempat duduk.png","TEMPAT DUDUK","7"),
+        item("transmisi.png","TRANSMISI","AUTOMATIC"),
+        item("bahan bakar.png","BAHAN BAKAR","BENSIN"),
+        item("pengemudi.png","PENGEMUDI","YES")
+    ]);
+}
+
+else if (nama === "innova") {
+    setData("../../images/mobil/innovaa.jpg", "Toyota Innova Reborn", [
+        item("tempat duduk.png","TEMPAT DUDUK","7"),
+        item("transmisi.png","TRANSMISI","AUTOMATIC"),
+        item("bahan bakar.png","BAHAN BAKAR","SOLAR"),
+        item("pengemudi.png","PENGEMUDI","YES")
+    ]);
+}
+
+else if (nama === "avanza") {
+    setData("../../images/mobil/avansaa.jpg", "Toyota Avansa", [
+        item("tempat duduk.png","TEMPAT DUDUK","7"),
+        item("transmisi.png","TRANSMISI","AUTOMATIC"),
+        item("bahan bakar.png","BAHAN BAKAR","SOLAR"),
+        item("pengemudi.png","PENGEMUDI","YES")
+    ]);
+}
+else if (nama === "pickup") {
+    setData("../../images/mobil/pickupp.jpg", "Pickup", [
+        item("tempat duduk.png","TEMPAT DUDUK","7"),
+        item("transmisi.png","TRANSMISI","AUTOMATIC"),
+        item("bahan bakar.png","BAHAN BAKAR","SOLAR"),
+        item("pengemudi.png","PENGEMUDI","YES")
+    ]);
+}
+
+
+else if (nama === "mio") {
+    setData("../../images/motor/mioo.jpg", "Yamaha Mio", [
+        item("tempat duduk.png","PENUMPANG","2"),
+        item("transmisi.png","TRANSMISI","AUTOMATIC"),
+        item("bahan bakar.png","BAHAN BAKAR","BENSIN")
+    ]);
+}
+
+else if (nama === "scoopy") {
+    setData("../../images/motor/scoopyy.jpg", "Honda Scoopy", [
+        item("tempat duduk.png","PENUMPANG","2"),
+        item("transmisi.png","TRANSMISI","AUTOMATIC"),
+        item("bahan bakar.png","BAHAN BAKAR","BENSIN")
+    ]);
+}
+
+else if (nama === "vario") {
+    setData("../../images/motor/varioo.jpg", "Honda Vario", [
+        item("tempat duduk.png","PENUMPANG","2"),
+        item("transmisi.png","TRANSMISI","AUTOMATIC"),
+        item("bahan bakar.png","BAHAN BAKAR","BENSIN")
+    ]);
+}
+
+/* ===== FUNCTION ===== */
+function setData(img, title, items) {
+    gambar.innerHTML = `<img src="${img}" width="420">`;
+    judul.innerText = title;
+    spek.innerHTML = items.join("");
+}
+
+function item(icon, label, value) {
+    return `
+    <div style="display:flex; align-items:center; gap:10px;">
+        <img src="../../images/fitur/${icon}" width="35">
+        <div>
+            <span style="font-size:13px;color:gray;">${label}</span><br>
+            <strong>${value}</strong>
+        </div>
+    </div>`;
+}
+</script>
+
+</body>
+</html>
